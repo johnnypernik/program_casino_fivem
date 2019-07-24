@@ -81,7 +81,6 @@ AddEventHandler('program-blackjack:started', function()
             local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
             if xPlayer.source == player1.source then
                 TriggerClientEvent('program-blackjack:givecards', xPlayer.source)
-                print("gracz1")
                 if player1black then
                     xPlayer.removeAccountMoney('black_money', bet)
                 else
@@ -89,7 +88,6 @@ AddEventHandler('program-blackjack:started', function()
                 end
             elseif xPlayer.source == player2.source then
                 TriggerClientEvent('program-blackjack:givecards', xPlayer.source)
-                print("gracz2")
                 if player2black then
                     xPlayer.removeAccountMoney('black_money', bet)
                 else
@@ -151,7 +149,6 @@ RegisterServerEvent('program-blackjack:p2')
 AddEventHandler('program-blackjack:p2', function()
     player2 = source
     if player1 ~= nil and player2 ~=nil then
-        print("elo")
         TriggerEvent('program-blackjack:started')
     end 
 end)
@@ -226,7 +223,6 @@ AddEventHandler('program-blackjack:sendResult1', function(result)
             player1finished = true
         end
     end
-    print("jedynka")
     if player1finished and player2finished then
         TriggerEvent('program-blackjack:pickWinner')
     end
@@ -245,7 +241,6 @@ AddEventHandler('program-blackjack:sendResult2', function(result)
     if player1finished and player2finished then
         TriggerEvent('program-blackjack:pickWinner')
     end
-    print("dwójka")
 end)
 
 RegisterServerEvent('program-blackjack:pickWinner')
@@ -260,9 +255,9 @@ AddEventHandler('program-blackjack:pickWinner', function()
     local player1 = ESX.GetPlayerFromId(player1)
     local player2 = ESX.GetPlayerFromId(player2)
     if player1result >= 21 and player2result >= 21 then
-        TriggerClientEvent('esx:showNotification', player1.source, '~y~Remisik~s~!')
-        TriggerClientEvent('esx:showNotification', player2.source, '~y~Remisik~s~!')
-        TriggerClientEvent('esx:showNotification', croupier.source, '~y~Remisik~s~!')
+        TriggerClientEvent('esx:showNotification', player1.source, '~y~Sorry~s~!')
+        TriggerClientEvent('esx:showNotification', player2.source, '~y~Sorry~s~!')
+        TriggerClientEvent('esx:showNotification', croupier.source, '~y~Sorry~s~!')
         if player1black then
             player1.addAccountMoney('black_money', bet)
         else
@@ -274,33 +269,33 @@ AddEventHandler('program-blackjack:pickWinner', function()
             player2.addMoney(bet)
         end
     elseif player1result > 21 and player2result <= 21 then
-        TriggerClientEvent('esx:showNotification', player1.source, '~y~Wygrał Gracz z krzesła drugiego~s~!')
-        TriggerClientEvent('esx:showNotification', player2.source, '~y~Wygrał Gracz z krzesła drugiego~s~!')
-        TriggerClientEvent('esx:showNotification', croupier.source, '~y~Wygrał Gracz z krzesła drugiego~s~!')
+        TriggerClientEvent('esx:showNotification', player1.source, '~y~The player sitting on the second chair won~s~!')
+        TriggerClientEvent('esx:showNotification', player2.source, '~y~The player sitting on the second chair won~s~!')
+        TriggerClientEvent('esx:showNotification', croupier.source, '~y~The player sitting on the second chair won~s~!')
         societyAccount.addMoney(bet*0.2)
         player2.addMoney(bet*1.8)
     elseif player2result > 21 and player1result <= 21 then
-        TriggerClientEvent('esx:showNotification', player1.source, '~y~Wygrał Gracz z krzesła pierwszego~s~!')
-        TriggerClientEvent('esx:showNotification', player2.source, '~y~Wygrał Gracz z krzesła pierwszego~s~!')
-        TriggerClientEvent('esx:showNotification', croupier.source, '~y~Wygrał Gracz z krzesła pierwszego~s~!')
+        TriggerClientEvent('esx:showNotification', player1.source, '~y~The player sitting on the first chair won~s~!')
+        TriggerClientEvent('esx:showNotification', player2.source, '~y~The player sitting on the first chair won~s~!')
+        TriggerClientEvent('esx:showNotification', croupier.source, '~y~The player sitting on the first chair won~s~!')
         societyAccount.addMoney(bet*0.2)
         player1.addMoney(bet*1.8)
     elseif player1subtraction < player2subtraction then
-        TriggerClientEvent('esx:showNotification', player1.source, '~y~Wygrał Gracz z krzesła pierwszego~s~!')
-        TriggerClientEvent('esx:showNotification', player2.source, '~y~Wygrał Gracz z krzesła pierwszego~s~!')
-        TriggerClientEvent('esx:showNotification', croupier.source, '~y~Wygrał Gracz z krzesła pierwszego~s~!')
+        TriggerClientEvent('esx:showNotification', player1.source, '~y~The player sitting on the first chair won~s~!')
+        TriggerClientEvent('esx:showNotification', player2.source, '~y~The player sitting on the first chair won~s~!')
+        TriggerClientEvent('esx:showNotification', croupier.source, '~y~The player sitting on the first chair won~s~!')
         societyAccount.addMoney(bet*0.2)
         player1.addMoney(bet*1.8)
     elseif player2subtraction < player1subtraction then
-        TriggerClientEvent('esx:showNotification', player1.source, '~y~Wygrał Gracz z krzesła drugiego~s~!')
-        TriggerClientEvent('esx:showNotification', player2.source, '~y~Wygrał Gracz z krzesła drugiego~s~!')
-        TriggerClientEvent('esx:showNotification', croupier.source, '~y~Wygrał Gracz z krzesła drugiego~s~!')
+        TriggerClientEvent('esx:showNotification', player1.source, '~y~The player sitting on the second chair won~s~!')
+        TriggerClientEvent('esx:showNotification', player2.source, '~y~The player sitting on the second chair won~s~!')
+        TriggerClientEvent('esx:showNotification', croupier.source, '~y~The player sitting on the second chair won~s~!')
         player2.addMoney(bet*1.8)
         societyAccount.addMoney(bet*0.2)
     elseif player1subtraction == player2subtraction then
-        TriggerClientEvent('esx:showNotification', player1.source, '~y~Remisik~s~!')
-        TriggerClientEvent('esx:showNotification', player2.source, '~y~Remisik~s~!')
-        TriggerClientEvent('esx:showNotification', croupier.source, '~y~Remisik~s~!')
+        TriggerClientEvent('esx:showNotification', player1.source, '~y~Sorry~s~!')
+        TriggerClientEvent('esx:showNotification', player2.source, '~y~Sorry~s~!')
+        TriggerClientEvent('esx:showNotification', croupier.source, '~y~Sorry~s~!')
         if player1black then
             player1.addAccountMoney('black_money', bet)
         else
