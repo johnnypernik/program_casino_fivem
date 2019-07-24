@@ -1,9 +1,6 @@
-# Thanks for 's0ig', he have released slotmachine witch i edited to make this casino pack
-
 # program_casino_fivem
-A pack of casino scripts in Lua lang for fivem
-Every money, this witch players win and lose is taking or giving to casino account, so there is perfect money circulation
-
+A resource-pack with casino scripts in Lua for ESX & fiveM
+There is a perfect money circulation, when people win or lose, the money goes in and out of the casino's account.
 
 # Required
 * esx_society
@@ -12,23 +9,24 @@ Every money, this witch players win and lose is taking or giving to casino accou
 
 # Installation 
 1. Upload [cas] directory to resource directory
-1. Add to server.cfg 
+1. Add this to server.cfg
 * >start program-casino
 * >start program-blackjack
 * >start slotmachine_1
-3. Configure files, (section Configurate)
-4. Improt program-casino.sql to database
+3. Configure the files to your own liking.
+4. Import program-casino.sql to database.
 
 
 # Configurate
-* To edit Casino zones u have to edit config.lua in program-casino
-* To edit Teleport pads to enter the casino zone you have to edit it in program-casino/client/main.lua in 'teleport' section (u have commented it, its easy to find)
-* To edit blackjack points u have edit program-blackjack/config.lua
-* To edit slotmachine zones u have to edit slotmachine_1/client/main.lua there is a lot of coords soo u will easy find it
+* To edit the Casino's zones you have to edit the config.lua in program-casino.
+* To edit the Teleport pads to enter the casino, you have to edit it in program-casino/client/main.lua in the 'teleport' section.
+* To edit the blackjack points you have edit program-blackjack/config.lua.
+* To edit the slotmachine zones you have to edit slotmachine_1/client/main.lua. There is a lot of coords so you will find it easily.
 
 # IMPORTANT
-Map is not included u have to upload your map or something, after casino dlc update to fivem I'll reconfigure this zones to officjal GTA ONLINE CASINO building
+The map that showcases the resources is not uploaded here, you can easily download a version of it yourself or change the zones to other locations. Here is the link to the map: https://pl.gta5-mods.com/maps/sasino-interior
 
-Again thanks for s0ig
+# CREDITS
+Thanks to 's0ig', which have released slotmachine_1 that is used in this resource-pack.
 
-Every bugs pls report on forum in thread or there github/issues
+If you find any bugs or exploits, please make an issue here on github or post a comment in the fiveM-forum post!
